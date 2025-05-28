@@ -1,0 +1,223 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    
+    --parking-available: 142.1 76.2% 36.3%;
+    --parking-limited: 38.2 92.5% 50.2%;  
+    --parking-full: 0 84.2% 60.2%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    font-family: 'Poppins', system-ui, sans-serif;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary/50 rounded;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary/80 rounded hover:bg-secondary;
+  }
+
+  /* Airbnb-style design elements */
+  .airbnb-card {
+    @apply rounded-xl shadow-md overflow-hidden transition-all duration-300 bg-card text-card-foreground;
+  }
+  
+  .airbnb-button {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+}
+
+/* Custom utility classes */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mapbox popup styles */
+.mapboxgl-popup {
+  max-width: 240px;
+}
+
+.mapboxgl-popup-content {
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Mapbox dark mode styles */
+.dark .mapboxgl-popup-content {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+.dark .mapboxgl-popup-tip {
+  border-top-color: #333;
+  border-bottom-color: #333;
+}
+
+.dark .mapboxgl-ctrl-group {
+  background-color: #333;
+}
+
+.dark .mapboxgl-ctrl button {
+  background-color: #333;
+}
+
+.dark .mapboxgl-ctrl button span {
+  filter: invert(1);
+}
+
+.dark .mapboxgl-ctrl button.mapboxgl-ctrl-zoom-in .mapboxgl-ctrl-icon,
+.dark .mapboxgl-ctrl button.mapboxgl-ctrl-zoom-out .mapboxgl-ctrl-icon,
+.dark .mapboxgl-ctrl button.mapboxgl-ctrl-compass .mapboxgl-ctrl-icon,
+.dark .mapboxgl-ctrl button.mapboxgl-ctrl-fullscreen .mapboxgl-ctrl-icon {
+  filter: invert(1);
+}
+
+/* Additional MapBox controls dark mode styling */
+.dark .mapboxgl-ctrl-attrib.mapboxgl-compact {
+  background-color: #222;
+}
+
+.dark .mapboxgl-ctrl-attrib.mapboxgl-compact a {
+  color: #aaa;
+}
+
+/* Adjust popup content text colors in dark mode */
+.dark .mapboxgl-popup-content h3 {
+  color: #f0f0f0;
+}
+
+.dark .mapboxgl-popup-content .text-gray-600,
+.dark .mapboxgl-popup-content .text-gray-500,
+.dark .mapboxgl-popup-content .text-gray-800 {
+  color: #bbb;
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+/* Define parking status colors that work in both light and dark mode */
+.dark .text-parking-available {
+  @apply text-green-400;
+}
+.dark .text-parking-limited {
+  @apply text-amber-400;
+}
+.dark .text-parking-full {
+  @apply text-red-400;
+}
+
+.dark .bg-parking-available\/10 {
+  @apply bg-green-950;
+}
+.dark .bg-parking-limited\/10 {
+  @apply bg-amber-950;
+}
+.dark .bg-parking-full\/10 {
+  @apply bg-red-950;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 640px) {
+  .mobile-full-height {
+    height: calc(100vh - 170px);
+  }
+}
